@@ -1,0 +1,16 @@
+<div class="grid gap-3 grid-cols-1 sm:grid-cols-3 md:grid-cols-5">
+  <!-- Evita usar .split('') en el template, pero si lo haces, que sea así: -->
+  @for(pokemon of '123456789012'.split(''); track $index) {
+    <div
+      class="bg-white bg-opacity-25 rounded-lg shadow-md flex flex-col justify-center items-center p-4 h-44 cursor-pointer"
+    >
+      <div class="rounded-full animate-pulse bg-gray-400/30 w-24 h-24 flex items-center justify-center">
+        <!-- Contenido del skeleton -->
+        <div class="h-4 w-16 bg-gray-200/50 rounded animate-pulse"></div>
+      </div>
+    </div>
+  }
+  <!-- <div class="col-span-5 text-center border-white h-28 flex justify-center items-center">
+    No hay pokemons
+  </div> -->
+</div>
