@@ -15,29 +15,29 @@ export default class PokemonPage implements OnInit {
 
   private pokemonService = inject(PokemonService);
   private route = inject(ActivatedRoute);
-    private title = inject(Title);
+  private title = inject(Title);
   private meta = inject(Meta);
 
   public pokemon = signal<Pokemon | null>(null);
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    if(!id) return;
+    if (!id) return;
     this.pokemonService.loadPokemon(id)
-    .pipe(
-      tap(({name, id}) => {
-        const pageTitle = `#${{id}} - ${{name}}`
-        const pageDescription = `Página del pokemon ${{ name}}`
+      .pipe(
+        tap(({ name, id }) => {
+          const pageTitle = `#${{ id }} - ${{ name }}`
+          const pageDescription = `Página del pokemon ${{ name }}`
 
-        this.title.setTitle(name);
-        this.meta.updateTag({name: 'description', content: pageDescription})
-        this.meta.updateTag({name: 'og:title', content: pageTitle})
-        this.meta.updateTag({name: 'og:description', content: pageDescription})
-        this.meta.updateTag({name: 'og:image', content: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`})
+          this.title.setTitle(name);
+          this.meta.updateTag({ name: 'description', content: pageDescription })
+          this.meta.updateTag({ name: 'og:title', content: pageTitle })
+          this.meta.updateTag({ name: 'og:description', content: pageDescription })
+          this.meta.updateTag({ name: 'og:image', content: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png` })
 
         })
-    )
-    .subscribe(this.pokemon.set)
+      )
+      .subscribe(this.pokemon.set)
   }
 
 }

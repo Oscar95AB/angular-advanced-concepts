@@ -24,9 +24,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"],
+            "styles": [
+              "src/styles.css"
+            ],
             "server": "src/main.server.ts",
-            "outputMode": "server",
             "security": {
               "allowedHosts": []
             },
@@ -34,8 +35,8 @@
               "entry": "src/server.ts"
             },
             "prerender": {
-    "discoverRoutes": false
-  }
+              "routesFile": "routes.txt"
+            }
           },
           "configurations": {
             "production": {
