@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@source "../src/**/*.{html,ts}"; /* 👈 ¡ESTA LÍNEA ES LA CLAVE! */
+/* Estilos globales para etiquetas HTML con variables nativas de Tailwind v4 */
+html,
+body {
+  background-color: var(--color-slate-900); /* v4 usa slate/gray refinados */
+  color: var(--color-white);
+  padding: 1rem;
+}
+
+h1 { @apply text-4xl font-bold; }
+h2 { @apply text-2xl font-bold text-slate-300 my-4; }
+h3 { @apply text-xl font-bold; }
+h4 { @apply text-lg font-bold; }
+h5 { @apply text-base font-bold; }
+small { @apply font-thin; }
+pre { @apply bg-slate-800 text-white p-4 rounded my-2 overflow-auto; }
+a { @apply text-blue-500 hover:underline; }
+
+/* Clases de componentes personalizadas */
+.btn {
+  @apply bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded transition-all;
+}
+
+.active {
+  @apply bg-blue-700 border-blue-500 border-0;
+}
+
+.selected-label {
+  @apply bg-slate-700 shadow-sm shadow-white transition-all;
+}

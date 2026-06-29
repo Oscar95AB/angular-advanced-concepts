@@ -28,6 +28,8 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: () => 'pokemons'
+    redirectTo: () => {
+     return 'about'
+    }
   }
 ];
