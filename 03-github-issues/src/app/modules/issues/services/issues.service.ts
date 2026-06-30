@@ -1,22 +1,44 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { injectQuery } from '@tanstack/angular-query-experimental';
 import { getIssues, getLabels } from '../actions';
+import { State } from '../interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IssuesService {
 
-  query = injectQuery(()=> ({
+  selectedState = signal<State>(State.All);
+  selectedLabels = signal(new Set<string>());
+
+  query = injectQuery(() => ({
     queryKey: ['labels'],
-    queryFn: ()=> getLabels()
+    queryFn: () => getLabels()
   }))
 
-  issuesQuery = injectQuery(()=> ({
-    queryKey: ['issues'],
-    queryFn: ()=> getIssues()
+  issuesQuery = injectQuery(() => ({
+    queryKey: ['issues',
+      {
+        state: this.selectedState(),
+        selectedLabels: [...this.selectedLabels()]
+      }
+    ],
+    queryFn: () => getIssues(this.selectedState(), [...this.selectedLabels()])
   }))
 
+  showIssuesByState(state: State) {
+    this.selectedState.set(state)
+  }
 
+  toggleLabel(label: string) {
+    const labels = this.selectedLabels();
+    if (labels.has(label)) {
+      labels.delete(label)
+    } else {
+      labels.add(label)
+    }
+
+    this.selectedLabels.set(new Set(labels))
+  }
 
 }

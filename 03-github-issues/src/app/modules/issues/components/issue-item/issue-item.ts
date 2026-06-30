@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { IssueService } from './../../services/issue';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { GitHubIssue, State } from '../../interfaces';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
@@ -12,6 +13,7 @@ import { RouterLink } from '@angular/router';
 export class IssueItem {
 
   issue = input.required<GitHubIssue>();
+  issueService = inject(IssueService);
 
   get isOpen() {
     return this.issue().state === State.Open
@@ -19,4 +21,8 @@ export class IssueItem {
 
   since = '';
 
+  prefetchData(){
+    // this.issueService.prefetchIssue(this.issue().number.toString());
+    this.issueService.setIssueData(this.issue())
+  }
 }
