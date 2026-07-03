@@ -17,7 +17,8 @@ export class IssuesService {
   }))
 
   issuesQuery = injectQuery(() => ({
-    queryKey: ['issues',
+    queryKey: [
+      'issues',
       {
         state: this.selectedState(),
         selectedLabels: [...this.selectedLabels()]
