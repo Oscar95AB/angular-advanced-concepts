@@ -1,0 +1,47 @@
+{
+  "name": "apx-workspace",
+  "version": "0.0.1",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint",
+    "apx-side-menu:build": "ng build apx-side-menu",
+    "apx-side-menu:test": "ng test apx-side-menu --no-watch --no-progress --browsers=chromium",
+    "apx-side-menu:lint": "ng lint apx-side-menu",
+    "apx-side-menu:publish": "npm run apx-side-menu:test && npm run apx-side-menu:build && npm publish dist/apx-side-menu/"
+  },
+  "private": true,
+  "packageManager": "npm@11.13.0",
+  "dependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/compiler": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0",
+    "@angular/platform-browser": "^21.2.0",
+    "@angular/router": "^21.2.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.2.18",
+    "@angular/cli": "^21.2.8",
+    "@angular/compiler-cli": "^21.2.0",
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/postcss": "^4.3.2",
+    "@vitest/browser-playwright": "^4.1.10",
+    "angular-eslint": "21.4.0",
+    "eslint": "^10.3.0",
+    "jsdom": "^28.0.0",
+    "ng-packagr": "^21.2.0",
+    "playwright": "^1.61.1",
+    "postcss": "^8.5.18",
+    "prettier": "^3.8.1",
+    "tailwindcss": "^4.3.2",
+    "typescript": "~5.9.2",
+    "typescript-eslint": "8.59.2",
+    "vitest": "^4.1.10"
+  }
+}

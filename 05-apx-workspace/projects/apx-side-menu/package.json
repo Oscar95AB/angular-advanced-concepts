@@ -1,0 +1,13 @@
+{
+  "name": "oab-side-menu",
+  "peerDependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/core": "^21.2.0"
+  },
+  "keywords": ["oscar", "alvarez", "do-not-use"],
+  "author":"Óscar Álvarez",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}
